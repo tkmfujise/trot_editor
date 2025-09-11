@@ -1,0 +1,104 @@
+[gd_scene load_steps=13 format=3 uid="uid://byyypft7sfdhq"]
+
+[ext_resource type="Theme" uid="uid://b7i768o1myrh3" path="res://addons/redscribe/themes/redscribe_theme.tres" id="1_wcadp"]
+[ext_resource type="Script" uid="uid://d2q1nqfc24ve" path="res://addons/redscribe/src/main/main.gd" id="2_nul35"]
+[ext_resource type="PackedScene" uid="uid://b8nb1wlpa30qv" path="res://addons/redscribe/src/editor/editor_area.tscn" id="3_nul35"]
+[ext_resource type="PackedScene" uid="uid://bpw0bre4t1p5c" path="res://addons/redscribe/src/repl/repl.tscn" id="4_xuyvw"]
+[ext_resource type="Texture2D" uid="uid://bvb7i3xj30k35" path="res://addons/redscribe/assets/icons/Editor_tab.svg" id="5_1suwp"]
+[ext_resource type="Texture2D" uid="uid://1egadao6byai" path="res://addons/redscribe/assets/icons/REPL_tab.svg" id="6_b8n4o"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_nul35"]
+device = -1
+command_or_control_autoremap = true
+keycode = 78
+
+[sub_resource type="Shortcut" id="Shortcut_xuyvw"]
+events = [SubResource("InputEventKey_nul35")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_pegfc"]
+device = -1
+command_or_control_autoremap = true
+keycode = 79
+
+[sub_resource type="Shortcut" id="Shortcut_1suwp"]
+events = [SubResource("InputEventKey_pegfc")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_b8n4o"]
+device = -1
+command_or_control_autoremap = true
+keycode = 83
+
+[sub_resource type="Shortcut" id="Shortcut_cgn3h"]
+events = [SubResource("InputEventKey_b8n4o")]
+
+[node name="ReDScribeMain" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme = ExtResource("1_wcadp")
+script = ExtResource("2_nul35")
+filemenu_shortcuts = Array[Shortcut]([SubResource("Shortcut_xuyvw"), SubResource("Shortcut_1suwp"), SubResource("Shortcut_cgn3h")])
+EditorArea = ExtResource("3_nul35")
+REPL = ExtResource("4_xuyvw")
+
+[node name="TopContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="MenuBar" type="MenuBar" parent="TopContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="FileMenu" type="MenuButton" parent="TopContainer/MenuBar"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "File"
+item_count = 3
+popup/item_0/text = "New"
+popup/item_0/id = 0
+popup/item_1/text = "Open"
+popup/item_1/id = 1
+popup/item_2/text = "Save"
+popup/item_2/id = 2
+
+[node name="TabBar" type="TabBar" parent="TopContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+current_tab = 0
+tab_count = 2
+tab_0/title = "Editor"
+tab_0/tooltip = "Shortcut: (Ctrl+[)"
+tab_0/icon = ExtResource("5_1suwp")
+tab_1/title = "REPL"
+tab_1/tooltip = "Shortcut: (Ctrl+])"
+tab_1/icon = ExtResource("6_b8n4o")
+
+[node name="LinkButtonContainer" type="MarginContainer" parent="TopContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="GithubLinkButton" type="LinkButton" parent="TopContainer/LinkButtonContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+tooltip_text = "Open the github repository."
+text = "ReDScribe"
+uri = "https://github.com/tkmfujise/ReDScribe"
+
+[node name="VersionLabel" type="Label" parent="TopContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "v0.1.0"
+
+[node name="BodyContainer" type="HSplitContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[connection signal="tab_changed" from="TopContainer/TabBar" to="." method="_on_tab_bar_tab_changed"]
