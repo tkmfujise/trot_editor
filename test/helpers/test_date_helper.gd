@@ -1,10 +1,4 @@
-extends GutTest
-
-
-func assert_match(val, str):
-	var regex = RegEx.new()
-	regex.compile(str)
-	assert_not_null(regex.search(val))
+extends GutTestMeta
 
 
 func test_now():
