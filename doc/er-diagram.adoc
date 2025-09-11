@@ -1,0 +1,39 @@
+= ER diagram
+
+== diagram
+[plantuml, er-diagram]
+....
+class Project {
+  ~ id
+  * name 
+  * created_at
+  * updated_at
+}
+class Page {
+  ~ id
+  + project_id
+  * created_at
+  * updated_at
+}
+class Memo {
+  ~ id
+  + page_id
+  * content
+  * created_at
+  * updated_at
+}
+class Hoofprint {
+  ~ id
+  + project_id
+  - date
+  * running_seconds
+}
+
+hide methods
+left to right direction
+
+Project::id --{ Page::project_id
+Page::id    --{ Memo::page_id
+Project::id --{ Hoofprint::project_id
+....
+
