@@ -6,9 +6,9 @@ var conn : SQLite
 
 # Model
 const _Project  = preload("res://src/db/models/project.gd")
-#const _Hoofprint = preload("res://src/db/models/comment.gd")
-@onready var Project   = _Project.new()
-#@onready var Hoofprint = _Hoofprint.new()
+const _Runner = preload("res://src/db/models/runner.gd")
+@onready var Project = _Project.new()
+@onready var Runner  = _Runner.new()
 
 
 func _ready() -> void:
@@ -34,3 +34,4 @@ func close() -> void:
 
 func recreate_tables() -> void:
 	DB.Project.recreate_table()
+	DB.Runner.recreate_table()
