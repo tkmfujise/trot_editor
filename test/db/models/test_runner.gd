@@ -10,7 +10,7 @@ func before_each():
 
 func attr(dict: Dictionary) -> Dictionary:
 	var attributes = { "project_id": project.id }
-	attributes.merge(dict)
+	attributes.merge(dict, true)
 	return attributes
 
 
@@ -87,4 +87,4 @@ func test_delete_all():
 
 
 func test_start():
-	pass
+	pass # TODO

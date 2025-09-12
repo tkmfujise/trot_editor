@@ -5,10 +5,12 @@ const verbosity_level : int = SQLite.VERBOSE
 var conn : SQLite
 
 # Model
-const _Project  = preload("res://src/db/models/project.gd")
-const _Runner = preload("res://src/db/models/runner.gd")
-@onready var Project = _Project.new()
-@onready var Runner  = _Runner.new()
+const _Project   = preload("res://src/db/models/project.gd")
+const _Runner    = preload("res://src/db/models/runner.gd")
+const _Hoofprint = preload("res://src/db/models/hoofprint.gd")
+@onready var Project   = _Project.new()
+@onready var Runner    = _Runner.new()
+@onready var Hoofprint = _Hoofprint.new()
 
 
 func _ready() -> void:
@@ -35,3 +37,4 @@ func close() -> void:
 func recreate_tables() -> void:
 	DB.Project.recreate_table()
 	DB.Runner.recreate_table()
+	DB.Hoofprint.recreate_table()
