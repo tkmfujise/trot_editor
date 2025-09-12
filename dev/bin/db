@@ -1,0 +1,26 @@
+#!/usr/bin/env bb
+
+(require '[babashka.pods :as pods])
+
+(pods/load-pod 'org.babashka/go-sqlite3 "0.1.0")
+(require '[pod.babashka.go-sqlite3 :as sqlite])
+
+(require '[babashka.fs :as fs])
+
+(def usr-path
+  (-> "~/Library/Application Support/Godot/app_userdata/"
+      fs/expand-home
+      str))
+
+(def db-path "data/trot-dev.db")
+; (fs/exists? db-path)
+
+
+(defn select-projects []
+  (sqlite/query db-path
+    ["select * from projects"]))
+
+
+(prn (count (select-projects)))
+
+

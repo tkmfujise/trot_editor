@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+require 'sqlite3'
+
+db = SQLite3::Database.new 'data/trot-dev.db'
+
+result = db.execute 'select * from projects'
+
+puts result.count

@@ -4,3 +4,6 @@
 
 data/*.db
 !data/.keep
+
+.lsp
+.clj-kondo

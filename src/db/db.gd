@@ -1,7 +1,8 @@
 extends Node
 
 var path := "res://data/trot-dev.db"
-const verbosity_level : int = SQLite.VERBOSE
+#const verbosity_level : int = SQLite.VERBOSE
+const verbosity_level : int = SQLite.NORMAL
 var conn : SQLite
 
 # Model
