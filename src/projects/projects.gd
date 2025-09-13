@@ -1,10 +1,10 @@
 extends Control
 
-@onready var Card := preload("res://src/projects/card/card.tscn")
+@export var Partial : PackedScene
 
 
 func _ready() -> void:
 	for project in DB.Project.all():
-		var card = Card.instantiate()
-		card.initialize(project)
-		%Container.add_child(card)
+		var partial = Partial.instantiate()
+		partial.initialize(project)
+		%Container.add_child(partial)

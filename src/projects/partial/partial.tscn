@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4ps2brqgls7o"]
+
+[ext_resource type="Theme" uid="uid://bp7tyi4g3un7a" path="res://themes/default.tres" id="1_8sx38"]
+[ext_resource type="Script" uid="uid://c1w1jsfugyod4" path="res://src/projects/partial/partial.gd" id="2_1t1cb"]
+
+[node name="Partial" type="CenterContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_8sx38")
+script = ExtResource("2_1t1cb")
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Project Name"
