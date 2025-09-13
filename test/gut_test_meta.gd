@@ -2,6 +2,11 @@ extends GutTest
 class_name GutTestMeta
 
 
+func setup_db():
+	DB.reopen("res://data/trot-test.db")
+	DB.recreate_tables()
+
+
 func assert_match(val, str):
 	var regex = RegEx.new()
 	regex.compile(str)

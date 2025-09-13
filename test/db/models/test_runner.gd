@@ -3,8 +3,7 @@ extends GutTestMeta
 var project
 
 func before_each():
-	DB.reopen("res://data/trot-test.db")
-	DB.recreate_tables()
+	setup_db()
 	project = DB.Project.create({ "name": "Test" })
 
 

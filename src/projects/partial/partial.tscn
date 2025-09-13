@@ -13,7 +13,22 @@ size_flags_horizontal = 3
 theme = ExtResource("1_8sx38")
 script = ExtResource("2_1t1cb")
 
-[node name="Label" type="Label" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Name" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Project Name"
+
+[node name="CreatedAt" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "2025/01/02T12:34:55"
+
+[node name="UpdatedAt" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "2025/01/02T12:34:55"
+
+[connection signal="pressed" from="VBoxContainer/Name" to="." method="_on_name_pressed"]

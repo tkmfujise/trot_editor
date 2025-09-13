@@ -16,11 +16,23 @@
 ; (fs/exists? db-path)
 
 
-(defn select-projects []
+(defn select-projects [where]
   (sqlite/query db-path
-    ["select * from projects"]))
+    [(str "select * from projects where " where)]))
 
 
-(prn (count (select-projects)))
+(defn select-projects-all []
+  (select-projects "1=1"))
+
+
+(defn delete-projects [where]
+  (sqlite/query db-path
+    [(str "delete from projects where " where)]))
+
+(prn (count (select-projects-all)))
+
+; (delete-projects "created_at > '2025-09-13T13'")
+
+
 
 

@@ -2,8 +2,7 @@ extends GutTestMeta
 
 
 func before_each():
-	DB.reopen("res://data/trot-test.db")
-	DB.recreate_tables()
+	setup_db()
 
 
 func test_count_if_nothing():
