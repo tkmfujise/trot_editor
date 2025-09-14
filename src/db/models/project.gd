@@ -9,6 +9,14 @@ class Record extends DB_Record:
 	var updated_at : String
 	func column_names(): return ['id', 'name', 'created_at', 'updated_at']
 
+	func find_or_build_hoofprint(date: String) -> DB_Record:
+		var record = DB.Hoofprint.find("project_id = %s AND date = '%s'" % [id, date])
+		if record: return record
+		else: return DB.Hoofprint.new_record({
+			"project_id": id,
+			"date": date
+		})
+
 
 func schema() -> Dictionary:
 	var dict = Dictionary()

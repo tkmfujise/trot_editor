@@ -76,3 +76,22 @@ func test_delete_all():
 	DB.Project.create({ "name": "Boo" })
 	DB.Project.delete_all()
 	assert_eq(DB.Project.count(), 0)
+
+
+func test_find_or_build_hoofprint_new():
+	var project = DB.Project.create({ "name": "Foo" })
+	var hoofprint = project.find_or_build_hoofprint('2025-01-02')
+	assert_not_null(hoofprint)
+	assert_eq(hoofprint.project_id, project.id)
+	assert_eq(hoofprint.date, '2025-01-02')
+	assert_eq(DB.Hoofprint.count(), 0)
+
+
+func test_find_or_build_hoofprint_existence():
+	var project = DB.Project.create({ "name": "Foo" })
+	DB.Hoofprint.create({ "project_id": project.id, "date": "2025-01-02" })
+	var hoofprint = project.find_or_build_hoofprint('2025-01-02')
+	assert_not_null(hoofprint)
+	assert_eq(hoofprint.project_id, project.id)
+	assert_eq(hoofprint.date, '2025-01-02')
+	assert_eq(DB.Hoofprint.count(), 1)

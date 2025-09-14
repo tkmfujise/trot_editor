@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://m81f14bhohs3"]
+[gd_scene load_steps=5 format=3 uid="uid://m81f14bhohs3"]
 
 [ext_resource type="Script" uid="uid://c01ls3v8cwer8" path="res://src/projects/projects.gd" id="1_30u63"]
 [ext_resource type="Theme" uid="uid://bp7tyi4g3un7a" path="res://themes/default.tres" id="1_oik6c"]
-[ext_resource type="PackedScene" uid="uid://b4ps2brqgls7o" path="res://src/projects/partial/partial.tscn" id="3_gh1ng"]
+[ext_resource type="PackedScene" uid="uid://b4ps2brqgls7o" path="res://src/projects/partial/project.tscn" id="3_gh1ng"]
+[ext_resource type="PackedScene" uid="uid://c4ic4dcyaj680" path="res://src/transition/transition.tscn" id="4_lwaly"]
 
 [node name="Projects" type="Control"]
 layout_mode = 3
@@ -34,3 +35,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 columns = 3
+
+[node name="ProjectTransition" parent="." instance=ExtResource("4_lwaly")]
+unique_name_in_owner = true
+next_scene_path = "uid://dbrwdo68ajdq5"

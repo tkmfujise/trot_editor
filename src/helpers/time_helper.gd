@@ -7,8 +7,14 @@ static func now() -> Dictionary:
 	dict.erase('dst')
 	return dict
 
+
+static func today() -> String:
+	var dict = now()
+	return '%d-%02d-%02d' % [dict['year'], dict['month'], dict['day']]
+
+
 static func now_unix() -> int:
-	return Time.get_unix_time_from_system()
+	return int(Time.get_unix_time_from_system())
 
 
 static func now_str() -> String:
@@ -31,9 +37,9 @@ static func dict2str(dict) -> String:
 	return Time.get_datetime_string_from_datetime_dict(dict, false)
 
 
-static func str2unix(str) -> int:
-	return Time.get_unix_time_from_datetime_string(str)
+static func str2unix(txt) -> int:
+	return Time.get_unix_time_from_datetime_string(txt)
 
 
-static func str2dict(str) -> Dictionary:
-	return Time.get_datetime_dict_from_datetime_string(str, true)
+static func str2dict(txt) -> Dictionary:
+	return Time.get_datetime_dict_from_datetime_string(txt, true)

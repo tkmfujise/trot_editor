@@ -16,9 +16,17 @@ func schema() -> Dictionary: # override this method
 	return dict
 
 
-func recreate_table() -> void:
+func drop_table() -> void:
 	DB.conn.drop_table(table_name())
+
+
+func create_table() -> void:
 	DB.conn.create_table(table_name(), schema())
+
+
+func recreate_table() -> void:
+	drop_table()
+	create_table()
 
 
 func all() -> Array:
@@ -37,17 +45,18 @@ func find(condition: String):
 
 
 func first(limit: int = 1, params : Dictionary = {}):
-	var str := 'SELECT * FROM "%s" WHERE %s ORDER BY %s LIMIT %s'
+	var tmp := 'SELECT * FROM "%s" WHERE %s ORDER BY %s LIMIT %s'
 	var cond  = params['condition'] if params.has('condition') else '1=1'
 	var order = params['order'] if params.has('order') else '"id" ASC'
 	var query := [table_name(), cond, order, limit]
-	DB.conn.query(str % query)
+	DB.conn.query(tmp % query)
 	var result = DB.conn.query_result.map(
-		func(params): return recordize(params))
+		func(dict): return recordize(dict))
 	if result:
 		return result[0] if limit == 1 else result
 	else:
-		return null if limit == 1 else []
+		if limit == 1: return null
+		else: return []
 
 
 func last(limit: int = 1):
@@ -68,8 +77,8 @@ func recordize_by(klass, params: Dictionary) -> Variant:
 	return record
 
 
-func new_record():
-	return recordize({})
+func new_record(attributes: Dictionary = {}):
+	return recordize(attributes)
 
 
 func insert(attributes: Dictionary) -> int:

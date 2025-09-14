@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbrwdo68ajdq5"]
+
+[ext_resource type="PackedScene" uid="uid://34kjfjbf2y8l" path="res://src/hoofprints/show/hoofprint.tscn" id="1_0j5vx"]
+[ext_resource type="Script" uid="uid://xeil6h2rubdg" path="res://src/projects/show/project.gd" id="1_x5d4h"]
+[ext_resource type="PackedScene" uid="uid://c4ic4dcyaj680" path="res://src/transition/transition.tscn" id="3_6c8yc"]
+
+[node name="Project" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x5d4h")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Header" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="VBoxContainer/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "< Back"
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="StartButton" type="Button" parent="VBoxContainer/CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Start"
+
+[node name="Hoofprint" parent="." instance=ExtResource("1_0j5vx")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+grow_vertical = 0
+
+[node name="BackTransition" parent="." instance=ExtResource("3_6c8yc")]
+unique_name_in_owner = true
+next_scene_path = "uid://m81f14bhohs3"
+
+[connection signal="pressed" from="VBoxContainer/Header/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer/StartButton" to="." method="_on_start_button_pressed"]

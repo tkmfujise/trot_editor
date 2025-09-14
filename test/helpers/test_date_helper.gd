@@ -8,6 +8,12 @@ func test_now():
 	assert_eq(time.keys(), ["year", "month", "day", "weekday", "hour", "minute", "second"])
 
 
+func test_today():
+	var date = TimeHelper.today()
+	assert_typeof(date, TYPE_STRING)
+	assert_match(date, '^\\d{4}-\\d{2}-\\d{2}$')
+
+
 func test_now_str():
 	var str = TimeHelper.now_str()
 	assert_typeof(str, TYPE_STRING)

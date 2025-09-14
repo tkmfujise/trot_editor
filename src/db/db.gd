@@ -36,6 +36,12 @@ func close() -> void:
 
 
 func recreate_tables() -> void:
-	DB.Project.recreate_table()
-	DB.Runner.recreate_table()
-	DB.Hoofprint.recreate_table()
+	var models = [
+		DB.Project,
+		DB.Runner,
+		DB.Hoofprint,
+	]
+	for model in ArrayHelper.reverse(models):
+		model.drop_table()
+	for model in models:
+		model.create_table()

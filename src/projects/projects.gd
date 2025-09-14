@@ -12,5 +12,4 @@ func _ready() -> void:
 
 
 func _project_selected(project: DB_Record) -> void:
-	#print_debug(project.name)
-	pass
+	%ProjectTransition.transit([project])

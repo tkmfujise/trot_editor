@@ -1,6 +1,6 @@
 extends GutTestMeta
 
-var Scene = preload("res://src/projects/partial/partial.tscn")
+var Scene = preload("res://src/projects/partial/project.tscn")
 var scene = null
 var project = null
 
@@ -14,4 +14,4 @@ func before_each():
 func test_initialize():
 	project = DB.Project.create({ "name": "test" })
 	scene.initialize(project)
-	assert_not_null(scene.model)
+	assert_not_null(scene.record)
