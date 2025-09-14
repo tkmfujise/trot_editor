@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dbrwdo68ajdq5"]
+[gd_scene load_steps=6 format=3 uid="uid://dbrwdo68ajdq5"]
 
 [ext_resource type="PackedScene" uid="uid://34kjfjbf2y8l" path="res://src/hoofprints/show/hoofprint.tscn" id="1_0j5vx"]
+[ext_resource type="Theme" uid="uid://bp7tyi4g3un7a" path="res://themes/default.tres" id="1_f1g5m"]
 [ext_resource type="Script" uid="uid://xeil6h2rubdg" path="res://src/projects/show/project.gd" id="1_x5d4h"]
 [ext_resource type="PackedScene" uid="uid://c4ic4dcyaj680" path="res://src/transition/transition.tscn" id="3_6c8yc"]
+[ext_resource type="PackedScene" uid="uid://dnmad6i4jp5nt" path="res://src/hoofprints/graph/graph.tscn" id="3_ebo2g"]
 
 [node name="Project" type="Control"]
 layout_mode = 3
@@ -11,7 +13,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_f1g5m")
 script = ExtResource("1_x5d4h")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -21,13 +32,29 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Header" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Header" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
 
 [node name="BackButton" type="Button" parent="VBoxContainer/Header"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 0
 text = "< Back"
+
+[node name="ProjectName" type="Label" parent="VBoxContainer/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "ProjectName"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 25
+
+[node name="Graph" parent="VBoxContainer/MarginContainer" instance=ExtResource("3_ebo2g")]
+layout_mode = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
 layout_mode = 2

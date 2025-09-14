@@ -1,0 +1,66 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnmad6i4jp5nt"]
+
+[ext_resource type="Script" uid="uid://c0xl5l6qwq1h0" path="res://src/hoofprints/graph/graph.gd" id="1_5hqkg"]
+[ext_resource type="PackedScene" uid="uid://bc6yqlx8vcmyj" path="res://src/hoofprints/graph/week/week.tscn" id="2_fpswt"]
+
+[node name="Graph" type="AspectRatioContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+ratio = 2.0
+script = ExtResource("1_5hqkg")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 15
+
+[node name="Week1" parent="GridContainer" instance=ExtResource("2_fpswt")]
+layout_mode = 2
+
+[node name="Week2" parent="GridContainer" instance=ExtResource("2_fpswt")]
+layout_mode = 2
+
+[node name="Week3" parent="GridContainer" instance=ExtResource("2_fpswt")]
+layout_mode = 2
+
+[node name="Week4" parent="GridContainer" instance=ExtResource("2_fpswt")]
+layout_mode = 2
+
+[node name="Week5" parent="GridContainer" instance=ExtResource("2_fpswt")]
+layout_mode = 2
+
+[node name="Week6" parent="GridContainer" instance=ExtResource("2_fpswt")]
+layout_mode = 2
+
+[node name="Week7" parent="GridContainer" instance=ExtResource("2_fpswt")]
+layout_mode = 2
+
+[node name="Week8" parent="GridContainer" instance=ExtResource("2_fpswt")]
+layout_mode = 2
+
+[node name="Week9" parent="GridContainer" instance=ExtResource("2_fpswt")]
+layout_mode = 2
+
+[node name="Week10" parent="GridContainer" instance=ExtResource("2_fpswt")]
+layout_mode = 2
+
+[node name="Week11" parent="GridContainer" instance=ExtResource("2_fpswt")]
+layout_mode = 2
+
+[node name="Week12" parent="GridContainer" instance=ExtResource("2_fpswt")]
+layout_mode = 2
+
+[node name="Week13" parent="GridContainer" instance=ExtResource("2_fpswt")]
+layout_mode = 2
+
+[node name="Week14" parent="GridContainer" instance=ExtResource("2_fpswt")]
+layout_mode = 2
+
+[node name="Week15" parent="GridContainer" instance=ExtResource("2_fpswt")]
+layout_mode = 2

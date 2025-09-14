@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://u850pdkviahq"]
+
+[ext_resource type="Script" uid="uid://byd0mpqtf7l1p" path="res://src/hoofprints/graph/day/day.gd" id="1_v8nvl"]
+
+[node name="Day" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.858373, 0.609513, 0.410334, 1)
+script = ExtResource("1_v8nvl")
