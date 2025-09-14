@@ -19,4 +19,5 @@ func _on_start_button_pressed() -> void:
 
 func _on_back_button_pressed() -> void:
 	%Hoofprint.running = false
+	record.save()
 	%BackTransition.transit()

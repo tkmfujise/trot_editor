@@ -15,24 +15,37 @@
 (def db-path "data/trot-dev.db")
 ; (fs/exists? db-path)
 
+(defn sql [query]
+  (sqlite/query db-path [query]))
+
 
 (defn select-projects [where]
-  (sqlite/query db-path
-    [(str "select * from projects where " where)]))
+  (sql (str "select * from projects where " where)))
 
 
 (defn select-projects-all []
   (select-projects "1=1"))
 
-
 (defn delete-projects [where]
-  (sqlite/query db-path
-    [(str "delete from projects where " where)]))
+  (sql (str "delete from projects where " where)))
 
 (prn (count (select-projects-all)))
 
 ; (delete-projects "created_at > '2025-09-13T13'")
 
 
+(defn select-hoofprints [where]
+  (sql (str "select * from hoofprints where " where)))
+
+(defn select-hoofprints-all []
+  (select-hoofprints "1=1"))
 
 
+(select-hoofprints-all)
+
+(sql "select sum(duration) as duration from hoofprints where project_id=8")
+
+(map #(map % [:project_id :date :duration])
+    (sql "select * from hoofprints"))
+
+(sql "select * from projects where id = 11")

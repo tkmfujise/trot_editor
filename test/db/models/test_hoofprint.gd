@@ -35,6 +35,7 @@ func test_create():
 	var record = DB.Hoofprint.create(attr({ "date": "2025-01-02", "duration": 123456789 }))
 	assert_eq(DB.Hoofprint.count(), 1)
 	assert_eq(record.date, '2025-01-02')
+	assert_eq(record.duration, 123456789)
 	assert_match_time_str(record.created_at)
 	assert_match_time_str(record.updated_at)
 

@@ -12,7 +12,7 @@ func initialize(_record: DB_Record) -> void:
 func update() -> void:
 	if not record: return
 	%Name.text = record.name
-	%CreatedAt.text = record.created_at
+	%HoofprintsCount.text = str(record.hoofprints_count())
 	%UpdatedAt.text = record.updated_at
 
 

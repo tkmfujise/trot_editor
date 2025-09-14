@@ -104,8 +104,12 @@ func delete_all() -> void:
 	delete('')
 
 
-func count(condition: String = '1=1') -> int:
+func select(columns: String, condition: String = '1=1') -> Array:
 	DB.conn.query(
-		'SELECT count(*) as cnt FROM %s WHERE %s' %
-		[table_name(), condition])
-	return DB.conn.query_result[0]['cnt']
+		'SELECT %s FROM %s WHERE %s' %
+		[columns, table_name(), condition])
+	return DB.conn.query_result
+
+
+func count(condition: String = '1=1') -> int:
+	return select('count(*) AS cnt', condition)[0]['cnt']

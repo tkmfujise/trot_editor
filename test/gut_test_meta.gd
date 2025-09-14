@@ -1,6 +1,18 @@
 extends GutTest
 class_name GutTestMeta
 
+var _always_on_top : bool
+
+
+func before_all():
+	var window = get_tree().current_scene.get_window()
+	_always_on_top = window.always_on_top
+	window.always_on_top = false
+
+
+func after_all():
+	get_tree().current_scene.get_window().always_on_top = _always_on_top
+
 
 func setup_db():
 	DB.reopen("res://data/trot-test.db")

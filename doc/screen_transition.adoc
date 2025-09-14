@@ -1,0 +1,39 @@
+= Screen Transition
+
+[plantuml, screen-transition]
+....
+hide empty description
+
+state projects {
+  state "Project" as project_partial
+  project_partial : <info>
+  project_partial : *name
+  project_partial : *hoofprint_count
+  project_partial : *updated_at
+  project_partial : *[Button]
+}
+state project {
+  project : *Daily hoofprints
+
+  state "[Back] button" as project_back
+  state "[Start] button" as project_start
+
+  state "Hoofprint" as project_hoofprint
+  project_hoofprint : <footer>
+  project_hoofprint : *beginning
+  project_hoofprint : *horse running
+  project_hoofprint : *goal
+
+  state "Runners" as project_runners
+  project_runners : <hidden>
+  project_runners : *files
+}
+
+
+[*] -> projects
+project_partial -> project : Button click
+projects <-- project_back
+project_start --> project_hoofprint : horse running
+project_start --> project_runners : open files
+....
+

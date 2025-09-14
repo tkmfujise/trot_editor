@@ -17,6 +17,22 @@ class Record extends DB_Record:
 			"date": date
 		})
 
+	func create_hoofprint(attributes: Dictionary) -> DB_Record:
+		var params = { "project_id": id }
+		attributes.merge(params)
+		return DB.Hoofprint.create(attributes)
+
+	func hoofprints() -> Array:
+		return DB.Hoofprint.where("project_id = %s" % id)
+
+	func hoofprints_count() -> int:
+		return DB.Hoofprint.count("project_id = %s" % id)
+
+	func hoofprints_duration() -> int:
+		var sum = DB.Hoofprint.select('SUM(duration) AS duration',
+			"project_id = %s" % id)[0]['duration']
+		return sum if sum else 0
+
 
 func schema() -> Dictionary:
 	var dict = Dictionary()

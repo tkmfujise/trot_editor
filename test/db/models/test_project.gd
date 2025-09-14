@@ -95,3 +95,43 @@ func test_find_or_build_hoofprint_existence():
 	assert_eq(hoofprint.project_id, project.id)
 	assert_eq(hoofprint.date, '2025-01-02')
 	assert_eq(DB.Hoofprint.count(), 1)
+
+
+func test_create_hoofprint():
+	var project = DB.Project.create({ "name": "Foo" })
+	var hoofprint = project.create_hoofprint({ "date": "2025-01-02", "duration": 2 })
+	assert_eq(DB.Hoofprint.count(), 1)
+	assert_eq(hoofprint.project_id, project.id)
+	assert_eq(hoofprint.duration, 2)
+
+
+func test_hoofprints():
+	var project = DB.Project.create({ "name": "Foo" })
+	project.create_hoofprint({ "date": "2025-01-01", "duration": 1 })
+	project.create_hoofprint({ "date": "2025-01-02", "duration": 2 })
+	assert_eq(project.hoofprints().size(), 2)
+
+
+func test_hoofprints_count_if_none():
+	var project = DB.Project.create({ "name": "Foo" })
+	assert_eq(project.hoofprints_count(), 0)
+
+
+func test_hoofprints_count_if_any():
+	var project = DB.Project.create({ "name": "Foo" })
+	project.create_hoofprint({ "date": '2025-01-01' })
+	project.create_hoofprint({ "date": '2025-01-02' })
+	assert_eq(project.hoofprints_count(), 2)
+
+
+func test_hoofprints_duration_if_none():
+	var project = DB.Project.create({ "name": "Foo" })
+	assert_eq(project.hoofprints_duration(), 0)
+
+
+func test_hoofprints_duration_if_any():
+	var project = DB.Project.create({ "name": "Foo" })
+	project.create_hoofprint({ 'date': '2025-01-01', 'duration': 1 })
+	project.create_hoofprint({ 'date': '2025-01-02', 'duration': 2 })
+	assert_eq(project.hoofprints_count(), 2)
+	assert_eq(project.hoofprints_duration(), 3)
