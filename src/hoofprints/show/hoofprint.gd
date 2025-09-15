@@ -1,6 +1,6 @@
 extends Control
 
-const OFFSET := 60
+const OFFSET := 65
 
 @export var running : bool = false : set = set_running
 @export var goal_min : int = 30 : set = set_goal_min
@@ -13,12 +13,14 @@ var goal_distance : float = 1.0
 
 func initialize(_record: DB_Record) -> void:
 	record = _record
+	set_passed_time(record.duration * 1.0)
 
 
 func _ready() -> void:
 	set_running(running)
 	set_goal_min(goal_min)
 	fit_goal_distance()
+	fit_horse_position()
 
 
 func set_running(val: bool) -> void:
@@ -31,7 +33,7 @@ func set_running(val: bool) -> void:
 
 func set_goal_min(minutes: int) -> void:
 	goal_min  = minutes
-	goal_time = goal_min * 60.0
+	goal_time = goal_min * 60
 	if is_node_ready():
 		%GoalLabel.text = str(goal_min)
 
