@@ -14,5 +14,8 @@ Not a walk, nor a gallop — a tool that helps you find your rhythm and shift in
 ![ER Diagram](doc/er-diagram.svg)
 
 
-## Screen Transition
-![Screen Transition](doc/screen_transition.svg)
+## Blueprints
+![projects](doc/mockup/projects.png)
+
+![projects_show](doc/mockup/projects_show.png)
+
