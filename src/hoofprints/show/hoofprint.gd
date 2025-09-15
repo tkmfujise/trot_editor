@@ -1,6 +1,6 @@
 extends Control
 
-const OFFSET = 30
+const OFFSET := 60
 
 @export var running : bool = false : set = set_running
 @export var goal_min : int = 30 : set = set_goal_min
@@ -17,6 +17,7 @@ func initialize(_record: DB_Record) -> void:
 
 func set_running(val: bool) -> void:
 	running = val
+	if not is_node_ready(): await ready
 	if running: %Horse.trot()
 	else: %Horse.idle()
 	if record: record.save()
@@ -24,12 +25,14 @@ func set_running(val: bool) -> void:
 
 func set_goal_min(minutes: int) -> void:
 	goal_min  = minutes
-	goal_time = goal_min * 60
+	goal_time = goal_min * 60.0
+	if not is_node_ready(): await ready
 	%GoalLabel.text = str(minutes)
 
 
 func set_passed_time(seconds: float) -> void:
 	passed_time = seconds
+	if not is_node_ready(): await ready
 	%PassedTime.text = formatted_passed_time()
 	if record: record.duration = floor(passed_time)
 
@@ -37,8 +40,7 @@ func set_passed_time(seconds: float) -> void:
 func _process(delta: float) -> void:
 	if not running: return
 	passed_time += delta
-	if goal_time > passed_time:
-		%Icon.position.x = passed_time * goal_distance / goal_time
+	if goal_time > passed_time: fit_horse_position()
 
 
 func formatted_passed_time() -> String:
@@ -49,5 +51,12 @@ func formatted_passed_time() -> String:
 	return '%02d:%02d:%02d' % [hour, minutes, sconds]
 
 
+func fit_horse_position() -> void:
+	var traveled = [passed_time, goal_time].min()
+	%Icon.position.x = traveled * goal_distance / goal_time
+
+
 func _on_resized() -> void:
-	goal_distance = get_viewport_rect().end.x - OFFSET
+	if not is_node_ready(): await ready
+	goal_distance = %HorseContainer.get_viewport_rect().end.x - OFFSET
+	fit_horse_position()

@@ -71,3 +71,14 @@ func test_formmatted_passed_time_max():
 	var str = scene.formatted_passed_time()
 	assert_typeof(str, TYPE_STRING)
 	assert_eq(str, '2562047788015215:30:07')
+
+
+func test_fit_horse_position():
+	scene.fit_horse_position()
+	assert_ne(scene.find_child('Icon').position.x, 0)
+	scene.passed_time = 1
+	scene.fit_horse_position()
+	assert_ne(scene.find_child('Icon').position.x, 0)
+	scene.passed_time = 30*60 + 1
+	scene.fit_horse_position()
+	assert_ne(scene.find_child('Icon').position.x, 0)

@@ -27,36 +27,37 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "00:00:00"
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+[node name="Ground" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="BeginningContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer"]
+[node name="BeginningContainer" type="MarginContainer" parent="VBoxContainer/Ground"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 
-[node name="BeginningLabel" type="Label" parent="VBoxContainer/MarginContainer/BeginningContainer"]
+[node name="BeginningLabel" type="Label" parent="VBoxContainer/Ground/BeginningContainer"]
 layout_mode = 2
 text = "0"
 
-[node name="HorseContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer"]
+[node name="HorseContainer" type="MarginContainer" parent="VBoxContainer/Ground"]
+unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 2
 size_flags_vertical = 8
 
-[node name="Icon" type="Node2D" parent="VBoxContainer/MarginContainer/HorseContainer"]
+[node name="Icon" type="Node2D" parent="VBoxContainer/Ground/HorseContainer"]
 unique_name_in_owner = true
 
-[node name="Horse" parent="VBoxContainer/MarginContainer/HorseContainer/Icon" instance=ExtResource("2_0tng0")]
+[node name="Horse" parent="VBoxContainer/Ground/HorseContainer/Icon" instance=ExtResource("2_0tng0")]
 unique_name_in_owner = true
 position = Vector2(16, -16)
 
-[node name="GoalContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer"]
+[node name="GoalContainer" type="MarginContainer" parent="VBoxContainer/Ground"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 
-[node name="GoalLabel" type="Label" parent="VBoxContainer/MarginContainer/GoalContainer"]
+[node name="GoalLabel" type="Label" parent="VBoxContainer/Ground/GoalContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "30"
