@@ -16,6 +16,8 @@ func initialize(_record: DB_Record) -> void:
 
 
 func _ready() -> void:
+	set_running(running)
+	set_goal_min(goal_min)
 	fit_goal_distance()
 
 
@@ -30,8 +32,8 @@ func set_running(val: bool) -> void:
 func set_goal_min(minutes: int) -> void:
 	goal_min  = minutes
 	goal_time = goal_min * 60.0
-	if not is_node_ready(): await ready
-	%GoalLabel.text = str(minutes)
+	if is_node_ready():
+		%GoalLabel.text = str(goal_min)
 
 
 func set_passed_time(seconds: float) -> void:

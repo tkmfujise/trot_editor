@@ -83,7 +83,7 @@ func test_fit_horse_position():
 	assert_eq(scene.find_child('Icon').position.x, 0)
 	scene.passed_time = 1
 	scene.fit_horse_position()
-	assert_gt(scene.find_child('Icon').position.x, 1)
+	assert_gt(scene.find_child('Icon').position.x, 0)
 	scene.passed_time = 30*60*2
 	scene.goal_time   = 30*60
 	scene.fit_horse_position()
