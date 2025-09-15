@@ -3,7 +3,7 @@ extends Control
 const OFFSET = 30
 
 @export var running : bool = false : set = set_running
-@export var goal_min : int = 1 : set = set_goal_min
+@export var goal_min : int = 30 : set = set_goal_min
 
 var record : DB_Record # DB.Hoofprintt
 var passed_time : float : set = set_passed_time
@@ -13,11 +13,12 @@ var goal_distance : float = 1.0
 
 func initialize(_record: DB_Record) -> void:
 	record = _record
-	set_goal_min(30)
 
 
 func set_running(val: bool) -> void:
 	running = val
+	if running: %Horse.trot()
+	else: %Horse.idle()
 	if record: record.save()
 
 

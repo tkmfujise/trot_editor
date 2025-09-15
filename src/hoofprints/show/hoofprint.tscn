@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://34kjfjbf2y8l"]
 
 [ext_resource type="Script" uid="uid://dc0edi6wbgp2k" path="res://src/hoofprints/show/hoofprint.gd" id="1_eddtq"]
-[ext_resource type="Texture2D" uid="uid://xluf3eejewr0" path="res://icon.svg" id="2_c3w8t"]
+[ext_resource type="PackedScene" uid="uid://cr2bl31b61vl3" path="res://src/hoofprints/horse/horse.tscn" id="2_0tng0"]
 
 [node name="Hoofprint" type="Control"]
 layout_mode = 3
@@ -44,11 +44,12 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 
-[node name="Icon" type="Sprite2D" parent="VBoxContainer/MarginContainer/HorseContainer"]
+[node name="Icon" type="Node2D" parent="VBoxContainer/MarginContainer/HorseContainer"]
 unique_name_in_owner = true
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_c3w8t")
-offset = Vector2(50, -50)
+
+[node name="Horse" parent="VBoxContainer/MarginContainer/HorseContainer/Icon" instance=ExtResource("2_0tng0")]
+unique_name_in_owner = true
+position = Vector2(16, -16)
 
 [node name="GoalContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer"]
 layout_mode = 2
