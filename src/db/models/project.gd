@@ -17,10 +17,10 @@ class Record extends DB_Record:
 			"date": date
 		})
 
-	func create_hoofprint(attributes: Dictionary) -> DB_Record:
-		var params = { "project_id": id }
-		attributes.merge(params)
-		return DB.Hoofprint.create(attributes)
+	func create_hoofprint(params: Dictionary) -> DB_Record:
+		var dict = { "project_id": id }
+		dict.merge(params)
+		return DB.Hoofprint.create(dict)
 
 	func hoofprints() -> Array:
 		return DB.Hoofprint.where("project_id = %s" % id)
