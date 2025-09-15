@@ -22,6 +22,7 @@ Panku="*res://addons/panku_console/console.tscn"
 
 [display]
 
+window/size/always_on_top=true
 window/stretch/scale=2.0
 
 [editor_plugins]
