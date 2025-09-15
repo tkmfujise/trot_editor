@@ -3,7 +3,7 @@ extends Control
 const OFFSET := 65
 
 @export var running : bool = false : set = set_running
-@export var goal_min : int = 30 : set = set_goal_min
+@export var goal_min : int = 60 : set = set_goal_min
 
 var record : DB_Record # DB.Hoofprintt
 var passed_time : float : set = set_passed_time
