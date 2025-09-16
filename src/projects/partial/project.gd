@@ -1,4 +1,4 @@
-extends CenterContainer
+extends MarginContainer
 
 signal selected(record: DB_Record)
 var record : DB_Record # DB.Project
@@ -16,5 +16,5 @@ func update() -> void:
 	%UpdatedAt.text = record.updated_at
 
 
-func _on_name_pressed() -> void:
+func _on_button_pressed() -> void:
 	selected.emit(record)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dbrwdo68ajdq5"]
 
 [ext_resource type="PackedScene" uid="uid://34kjfjbf2y8l" path="res://src/hoofprints/show/hoofprint.tscn" id="1_0j5vx"]
-[ext_resource type="Theme" uid="uid://bp7tyi4g3un7a" path="res://themes/default.tres" id="1_f1g5m"]
+[ext_resource type="Theme" uid="uid://bp7tyi4g3un7a" path="res://themes/default.tres" id="1_ebo2g"]
 [ext_resource type="Script" uid="uid://xeil6h2rubdg" path="res://src/projects/show/project.gd" id="1_x5d4h"]
 [ext_resource type="PackedScene" uid="uid://c4ic4dcyaj680" path="res://src/transition/transition.tscn" id="3_6c8yc"]
 [ext_resource type="PackedScene" uid="uid://dnmad6i4jp5nt" path="res://src/hoofprints/graph/graph.tscn" id="3_ebo2g"]
@@ -13,7 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_f1g5m")
+theme = ExtResource("1_ebo2g")
 script = ExtResource("1_x5d4h")
 
 [node name="ColorRect" type="ColorRect" parent="."]

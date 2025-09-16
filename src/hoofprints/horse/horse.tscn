@@ -90,5 +90,6 @@ autoplay = "idle"
 
 [node name="TrotTimer" type="Timer" parent="."]
 unique_name_in_owner = true
+wait_time = 300.0
 
 [connection signal="timeout" from="TrotTimer" to="." method="_on_trot_timer_timeout"]

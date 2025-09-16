@@ -3,40 +3,75 @@
 [ext_resource type="Theme" uid="uid://bp7tyi4g3un7a" path="res://themes/default.tres" id="1_jxwm7"]
 [ext_resource type="Script" uid="uid://c1w1jsfugyod4" path="res://src/projects/partial/project.gd" id="2_44ni1"]
 
-[node name="Project" type="CenterContainer"]
-anchors_preset = 15
+[node name="Project" type="MarginContainer"]
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
+offset_bottom = 107.0
 grow_horizontal = 2
-grow_vertical = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_jxwm7")
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
 script = ExtResource("2_44ni1")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
 
-[node name="Name" type="Button" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="HeadContainer" type="CenterContainer" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/HBoxContainer/HeadContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 10
+
+[node name="Icon" type="Label" parent="PanelContainer/HBoxContainer/HeadContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 50
+text = "📕"
+
+[node name="BodyContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Name" type="Label" parent="PanelContainer/HBoxContainer/BodyContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "Project Name"
 
-[node name="HoofprintsContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HoofprintsContainer" type="HBoxContainer" parent="PanelContainer/HBoxContainer/BodyContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/HoofprintsContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Hoofprints: "
-
-[node name="HoofprintsCount" type="Label" parent="VBoxContainer/HoofprintsContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "0"
-
-[node name="UpdatedAt" type="Label" parent="VBoxContainer"]
+[node name="UpdatedAt" type="Label" parent="PanelContainer/HBoxContainer/BodyContainer/HoofprintsContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "2025/01/02T12:34:55"
 
-[connection signal="pressed" from="VBoxContainer/Name" to="." method="_on_name_pressed"]
+[node name="Spacer" type="Label" parent="PanelContainer/HBoxContainer/BodyContainer/HoofprintsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "         "
+
+[node name="Label" type="Label" parent="PanelContainer/HBoxContainer/BodyContainer/HoofprintsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Hoofprints: "
+
+[node name="HoofprintsCount" type="Label" parent="PanelContainer/HBoxContainer/BodyContainer/HoofprintsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="Button" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

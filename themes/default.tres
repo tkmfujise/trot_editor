@@ -1,5 +1,25 @@
-[gd_resource type="Theme" format=3 uid="uid://bp7tyi4g3un7a"]
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bp7tyi4g3un7a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nkonk"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.466181, 0.466181, 0.466181, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.772951, 0.772951, 0.772951, 0.6)
+shadow_size = 2
+shadow_offset = Vector2(5, 5)
 
 [resource]
 Label/colors/font_color = Color(0, 0, 0, 1)
 Label/colors/font_outline_color = Color(1, 1, 1, 1)
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_nkonk")
