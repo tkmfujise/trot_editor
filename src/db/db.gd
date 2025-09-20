@@ -7,10 +7,10 @@ var conn : SQLite
 
 # Model
 const _Project   = preload("res://src/db/models/project.gd")
-const _Runner    = preload("res://src/db/models/runner.gd")
+const _File      = preload("res://src/db/models/file.gd")
 const _Hoofprint = preload("res://src/db/models/hoofprint.gd")
 @onready var Project   = _Project.new()
-@onready var Runner    = _Runner.new()
+@onready var File      = _File.new()
 @onready var Hoofprint = _Hoofprint.new()
 
 
@@ -38,7 +38,7 @@ func close() -> void:
 func recreate_tables() -> void:
 	var models = [
 		DB.Project,
-		DB.Runner,
+		DB.File,
 		DB.Hoofprint,
 	]
 	for model in ArrayHelper.reverse(models):

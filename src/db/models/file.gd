@@ -1,5 +1,5 @@
 extends DB_Table
-func table_name() -> String: return 'runners'
+func table_name() -> String: return 'files'
 
 func recordize(json: Dictionary): return recordize_by(Record, json)
 class Record extends DB_Record:

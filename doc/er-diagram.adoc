@@ -28,7 +28,7 @@ class Hoofprint {
   - date
   * duration
 }
-class Runner {
+class File {
   ~ id
   + project_id
   * path
@@ -40,6 +40,6 @@ left to right direction
 Project::id --{ Page::project_id
 Page::id    --{ Memo::page_id
 Project::id --{ Hoofprint::project_id
-Project::id --{ Runner::project_id
+Project::id --{ File::project_id
 ....
 

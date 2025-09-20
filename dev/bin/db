@@ -49,3 +49,5 @@
     (sql "select * from hoofprints"))
 
 (sql "select * from projects where id = 11")
+
+(sql "select * from files inner join projects on projects.id = files.project_id")
