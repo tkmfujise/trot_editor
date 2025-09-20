@@ -24,9 +24,22 @@ func test_initialize():
 
 func test_back_button_pressed():
 	project = DB.Project.create({ "name": "test" })
-	scene.initialize(project)
 	assert_eq(DB.Hoofprint.count(), 0)
+	scene.initialize(project)
+	assert_eq(DB.Hoofprint.count(), 1)
 	scene._on_back_button_pressed()
 	assert_eq(DB.Hoofprint.count(), 1)
 	assert_ne(scene, get_tree().current_scene)
 	get_tree().quit()
+
+
+func test_on_collapse_button_pressed():
+	var window_height = get_window().size.y
+	scene._on_collapse_button_pressed()
+	assert_eq(scene.find_child('TabContainer').visible, false)
+	assert_eq(scene.find_child('CollapseButton').text, '+')
+	assert_ne(get_window().size.y, window_height)
+	scene._on_collapse_button_pressed()
+	assert_eq(scene.find_child('TabContainer').visible, true)
+	assert_eq(scene.find_child('CollapseButton').text, '-')
+	assert_eq(get_window().size.y, window_height)
