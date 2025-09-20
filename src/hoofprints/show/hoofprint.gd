@@ -1,4 +1,4 @@
-extends Control
+extends MarginContainer
 
 const OFFSET := 65
 
@@ -71,3 +71,11 @@ func _on_resized() -> void:
 	if is_node_ready():
 		fit_goal_distance()
 		fit_horse_position()
+
+
+func _on_start_button_pressed() -> void:
+	running = !running
+	if running:
+		%StartButton.text = 'Stop'
+	else:
+		%StartButton.text = 'Start'

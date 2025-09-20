@@ -1,19 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://34kjfjbf2y8l"]
+[gd_scene load_steps=4 format=3 uid="uid://34kjfjbf2y8l"]
 
 [ext_resource type="Script" uid="uid://dc0edi6wbgp2k" path="res://src/hoofprints/show/hoofprint.gd" id="1_eddtq"]
+[ext_resource type="Theme" uid="uid://bp7tyi4g3un7a" path="res://themes/default.tres" id="1_w7hl2"]
 [ext_resource type="PackedScene" uid="uid://cr2bl31b61vl3" path="res://src/hoofprints/horse/horse.tscn" id="2_0tng0"]
 
-[node name="Hoofprint" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_eddtq")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
+[node name="Hoofprint" type="MarginContainer"]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -21,45 +12,51 @@ anchor_bottom = 1.0
 offset_top = -50.0
 grow_horizontal = 2
 grow_vertical = 0
+theme = ExtResource("1_w7hl2")
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+script = ExtResource("1_eddtq")
 
-[node name="PassedTime" type="Label" parent="VBoxContainer"]
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+
+[node name="Ground" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="PassedTime" type="Label" parent="Ground"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "00:00:00"
 
-[node name="Ground" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-
-[node name="BeginningContainer" type="MarginContainer" parent="VBoxContainer/Ground"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 8
-
-[node name="BeginningLabel" type="Label" parent="VBoxContainer/Ground/BeginningContainer"]
-layout_mode = 2
-text = "0"
-
-[node name="HorseContainer" type="MarginContainer" parent="VBoxContainer/Ground"]
+[node name="HorseContainer" type="MarginContainer" parent="Ground"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 8
 
-[node name="Icon" type="Node2D" parent="VBoxContainer/Ground/HorseContainer"]
+[node name="Icon" type="Node2D" parent="Ground/HorseContainer"]
 unique_name_in_owner = true
 
-[node name="Horse" parent="VBoxContainer/Ground/HorseContainer/Icon" instance=ExtResource("2_0tng0")]
+[node name="Horse" parent="Ground/HorseContainer/Icon" instance=ExtResource("2_0tng0")]
 unique_name_in_owner = true
 position = Vector2(16, -16)
 
-[node name="GoalContainer" type="MarginContainer" parent="VBoxContainer/Ground"]
+[node name="GoalContainer" type="MarginContainer" parent="Ground"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 
-[node name="GoalLabel" type="Label" parent="VBoxContainer/Ground/GoalContainer"]
+[node name="GoalLabel" type="Label" parent="Ground/GoalContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "30"
 
+[node name="StartButton" type="Button" parent="Ground"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Start"
+
 [connection signal="resized" from="." to="." method="_on_resized"]
+[connection signal="pressed" from="Ground/StartButton" to="." method="_on_start_button_pressed"]

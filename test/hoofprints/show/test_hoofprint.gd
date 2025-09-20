@@ -13,11 +13,20 @@ func test_ready():
 	assert_not_null(scene)
 
 
-func test_initialize():
+func test_initialize_new():
 	var project = DB.Project.create({ 'name': 'Foo' })
 	var hoofprint = project.find_or_build_hoofprint(TimeHelper.today())
 	scene.initialize(hoofprint)
-	assert_not_null(scene.record)
+	assert_eq(scene.running, false)
+	assert_eq(scene.passed_time, 0)
+
+
+func test_initialize_existing():
+	var project = DB.Project.create({ 'name': 'Foo' })
+	var hoofprint = project.create_hoofprint({ 'duration': 1, 'date': TimeHelper.today() })
+	scene.initialize(hoofprint)
+	assert_eq(scene.running, false)
+	assert_eq(scene.passed_time, 1)
 
 
 func test_running_unless_record():
@@ -90,3 +99,16 @@ func test_fit_horse_position():
 	assert_between(scene.find_child('Icon').position.x,
 		100,
 		scene.find_child('HorseContainer').get_viewport_rect().end.x)
+
+
+func test_on_start_button_pressed():
+	var project = DB.Project.create({ 'name': 'Foo' })
+	var hoofprint = project.find_or_build_hoofprint(TimeHelper.today())
+	scene.initialize(hoofprint)
+	assert_eq(scene.find_child('StartButton').text, 'Start')
+	scene._on_start_button_pressed()
+	assert_eq(scene.running, true)
+	assert_eq(scene.find_child('StartButton').text, 'Stop')
+	scene._on_start_button_pressed()
+	assert_eq(scene.running, false)
+	assert_eq(scene.find_child('StartButton').text, 'Start')
