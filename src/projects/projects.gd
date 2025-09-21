@@ -11,5 +11,9 @@ func _ready() -> void:
 		%Container.add_child(partial)
 
 
+func _on_add_new_button_pressed() -> void:
+	%AddNewTransition.transit([DB.Project.new_record()])
+
+
 func _project_selected(project: DB_Record) -> void:
 	%ProjectTransition.transit([project])

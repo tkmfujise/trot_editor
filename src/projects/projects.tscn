@@ -20,6 +20,10 @@ Partial = ExtResource("3_gh1ng")
 unique_name_in_owner = true
 next_scene_path = "uid://dbrwdo68ajdq5"
 
+[node name="AddNewTransition" parent="." instance=ExtResource("4_lwaly")]
+unique_name_in_owner = true
+next_scene_path = "uid://bh4tadm3n73nj"
+
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -45,7 +49,7 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 5
 
-[node name="Button" type="Button" parent="VBoxContainer/Nav"]
+[node name="AddNewButton" type="Button" parent="VBoxContainer/Nav"]
 layout_mode = 2
 size_flags_horizontal = 8
 text = "Add New"
@@ -59,3 +63,5 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[connection signal="pressed" from="VBoxContainer/Nav/AddNewButton" to="." method="_on_add_new_button_pressed"]

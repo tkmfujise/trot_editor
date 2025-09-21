@@ -21,6 +21,13 @@ static func now_str() -> String:
 	return Time.get_datetime_string_from_system()
 
 
+static func format(txt: String) -> String:
+	var arr = txt.split('T')
+	var date = arr[0].replace('-', '/')
+	var time = ':'.join(arr[1].split(':').slice(0, 2))
+	return '%s %s' % [date, time]
+
+
 static func unix2dict(unix_time) -> Dictionary:
 	return Time.get_datetime_dict_from_unix_time(unix_time)
 

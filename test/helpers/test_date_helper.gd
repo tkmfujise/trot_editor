@@ -25,6 +25,12 @@ func test_now_unix():
 	assert_typeof(time, TYPE_INT)
 
 
+func test_format():
+	var str = TimeHelper.format(TimeHelper.now_str())
+	assert_typeof(str, TYPE_STRING)
+	assert_match(str, '^\\d{4}/\\d{2}/\\d{2} \\d{2}:\\d{2}$')
+
+
 func test_unix2dict():
 	var time = TimeHelper.now_unix()
 	var dict = TimeHelper.unix2dict(time)

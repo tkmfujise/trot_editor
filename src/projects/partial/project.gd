@@ -13,7 +13,7 @@ func update() -> void:
 	if not record: return
 	%Name.text = record.name
 	%HoofprintsCount.text = str(record.hoofprints_count())
-	%UpdatedAt.text = record.updated_at
+	%UpdatedAt.text = TimeHelper.format(record.updated_at)
 
 
 func _on_button_pressed() -> void:

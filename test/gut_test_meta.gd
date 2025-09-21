@@ -14,6 +14,13 @@ func after_all():
 	get_tree().current_scene.get_window().always_on_top = _always_on_top
 
 
+func transition_with(f: Callable):
+	var prev_scene = get_tree().current_scene
+	f.call()
+	while prev_scene == get_tree().current_scene:
+		await get_tree().process_frame
+
+
 func setup_db():
 	DB.reopen("res://data/trot-test.db")
 	DB.recreate_tables()

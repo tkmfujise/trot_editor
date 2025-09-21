@@ -1,10 +1,73 @@
-[gd_scene load_steps=6 format=3 uid="uid://dbrwdo68ajdq5"]
+[gd_scene load_steps=9 format=3 uid="uid://dbrwdo68ajdq5"]
 
 [ext_resource type="PackedScene" uid="uid://34kjfjbf2y8l" path="res://src/hoofprints/show/hoofprint.tscn" id="1_0j5vx"]
 [ext_resource type="Theme" uid="uid://bp7tyi4g3un7a" path="res://themes/default.tres" id="1_ebo2g"]
 [ext_resource type="Script" uid="uid://xeil6h2rubdg" path="res://src/projects/show/project.gd" id="1_x5d4h"]
 [ext_resource type="PackedScene" uid="uid://c4ic4dcyaj680" path="res://src/transition/transition.tscn" id="3_6c8yc"]
 [ext_resource type="PackedScene" uid="uid://dnmad6i4jp5nt" path="res://src/hoofprints/graph/graph.tscn" id="3_ebo2g"]
+[ext_resource type="PackedScene" uid="uid://c4um2sg1dyj6c" path="res://addons/redscribe/src/editor/editor.tscn" id="5_mbwn4"]
+[ext_resource type="FontFile" uid="uid://hp4ljcfknxir" path="res://addons/redscribe/fonts/FiraCode/FiraCode-Regular.ttf" id="6_11bfw"]
+
+[sub_resource type="CodeHighlighter" id="CodeHighlighter_11bfw"]
+number_color = Color(1, 1, 1, 1)
+symbol_color = Color(0.9843137, 0.9843137, 0.827451, 1)
+function_color = Color(0.972549, 0.6627451, 0.8352941, 1)
+member_variable_color = Color(1, 1, 1, 1)
+keyword_colors = {
+"alias": Color(0.46666667, 0.9411765, 1, 1),
+"alias_method": Color(0.46666667, 0.9411765, 1, 1),
+"attr": Color(0.46666667, 0.9411765, 1, 1),
+"attr_accessor": Color(0.46666667, 0.9411765, 1, 1),
+"attr_reader": Color(0.46666667, 0.9411765, 1, 1),
+"attr_writer": Color(0.46666667, 0.9411765, 1, 1),
+"begin": Color(0.95686275, 0.6901961, 0.2627451, 1),
+"break": Color(0.95686275, 0.6901961, 0.2627451, 1),
+"case": Color(0.95686275, 0.6901961, 0.2627451, 1),
+"catch": Color(0.95686275, 0.6901961, 0.2627451, 1),
+"class": Color(0.95686275, 0.6901961, 0.2627451, 1),
+"def": Color(0.95686275, 0.6901961, 0.2627451, 1),
+"do": Color(0.95686275, 0.6901961, 0.2627451, 1),
+"else": Color(0.95686275, 0.6901961, 0.2627451, 1),
+"elsif": Color(0.95686275, 0.6901961, 0.2627451, 1),
+"end": Color(0.95686275, 0.6901961, 0.2627451, 1),
+"extend": Color(0.95686275, 0.6901961, 0.2627451, 1),
+"false": Color(0.59607846, 0.88235295, 1, 1),
+"for": Color(0.95686275, 0.6901961, 0.2627451, 1),
+"if": Color(0.95686275, 0.6901961, 0.2627451, 1),
+"include": Color(0.95686275, 0.6901961, 0.2627451, 1),
+"initialize": Color(0.95686275, 0.6901961, 0.2627451, 1),
+"module": Color(0.95686275, 0.6901961, 0.2627451, 1),
+"new": Color(0.95686275, 0.6901961, 0.2627451, 1),
+"next": Color(0.95686275, 0.6901961, 0.2627451, 1),
+"nil": Color(0.59607846, 0.88235295, 1, 1),
+"prepend": Color(0.95686275, 0.6901961, 0.2627451, 1),
+"private": Color(0.46666667, 0.9411765, 1, 1),
+"protected": Color(0.46666667, 0.9411765, 1, 1),
+"public": Color(0.46666667, 0.9411765, 1, 1),
+"raise": Color(0.95686275, 0.6901961, 0.2627451, 1),
+"redo": Color(0.95686275, 0.6901961, 0.2627451, 1),
+"require": Color(0.95686275, 0.6901961, 0.2627451, 1),
+"rescue": Color(0.95686275, 0.6901961, 0.2627451, 1),
+"retry": Color(0.95686275, 0.6901961, 0.2627451, 1),
+"return": Color(0.95686275, 0.6901961, 0.2627451, 1),
+"self": Color(0.46666667, 0.9411765, 1, 1),
+"super": Color(0.46666667, 0.9411765, 1, 1),
+"throw": Color(0.95686275, 0.6901961, 0.2627451, 1),
+"true": Color(0.59607846, 0.88235295, 1, 1),
+"unless": Color(0.95686275, 0.6901961, 0.2627451, 1),
+"until": Color(0.95686275, 0.6901961, 0.2627451, 1),
+"using": Color(0.95686275, 0.6901961, 0.2627451, 1),
+"when": Color(0.95686275, 0.6901961, 0.2627451, 1),
+"while": Color(0.95686275, 0.6901961, 0.2627451, 1),
+"yield": Color(0.46666667, 0.9411765, 1, 1)
+}
+color_regions = {
+"\" \"": Color(0.27450982, 0.9411765, 0.03529412, 1),
+"#": Color(0.3647059, 0.6627451, 0.9254902, 1),
+"' '": Color(0.27450982, 0.9411765, 0.03529412, 1),
+":  ": Color(0.8627451, 0.96862745, 0.0627451, 1),
+"@  ": Color(0.46666667, 0.9411765, 1, 1)
+}
 
 [node name="Project" type="Control"]
 layout_mode = 3
@@ -15,6 +78,14 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_ebo2g")
 script = ExtResource("1_x5d4h")
+
+[node name="BackTransition" parent="." instance=ExtResource("3_6c8yc")]
+unique_name_in_owner = true
+next_scene_path = "uid://m81f14bhohs3"
+
+[node name="EditTransition" parent="." instance=ExtResource("3_6c8yc")]
+unique_name_in_owner = true
+next_scene_path = "uid://bh4tadm3n73nj"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -34,6 +105,10 @@ grow_vertical = 2
 
 [node name="Header" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
 
 [node name="BackButton" type="Button" parent="VBoxContainer/Header"]
 unique_name_in_owner = true
@@ -79,6 +154,14 @@ visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
+[node name="Editor" parent="VBoxContainer/TabContainer/Memo" instance=ExtResource("5_mbwn4")]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/background_color = Color(0.023529412, 0.1254902, 0.21568628, 1)
+theme_override_fonts/font = ExtResource("6_11bfw")
+theme_override_font_sizes/font_size = 18
+syntax_highlighter = SubResource("CodeHighlighter_11bfw")
+
 [node name="Files" type="MarginContainer" parent="VBoxContainer/TabContainer"]
 visible = false
 layout_mode = 2
@@ -89,6 +172,20 @@ visible = false
 layout_mode = 2
 metadata/_tab_index = 3
 
+[node name="Settings" type="MarginContainer" parent="VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_top = 20
+metadata/_tab_index = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/TabContainer/Settings"]
+layout_mode = 2
+
+[node name="EditButton" type="Button" parent="VBoxContainer/TabContainer/Settings/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Edit"
+
 [node name="Footer" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
 
@@ -96,9 +193,7 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="BackTransition" parent="." instance=ExtResource("3_6c8yc")]
-unique_name_in_owner = true
-next_scene_path = "uid://m81f14bhohs3"
-
 [connection signal="pressed" from="VBoxContainer/Header/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Header/CollapseButton" to="." method="_on_collapse_button_pressed"]
+[connection signal="tab_changed" from="VBoxContainer/TabContainer" to="." method="_on_tab_container_tab_changed"]
+[connection signal="pressed" from="VBoxContainer/TabContainer/Settings/VBoxContainer/EditButton" to="." method="_on_edit_button_pressed"]

@@ -1,0 +1,37 @@
+extends GutTestMeta
+
+const Scene = preload("res://src/projects/form/project.tscn")
+var scene = null
+
+
+func before_each():
+	scene = Scene.instantiate()
+	add_child(scene)
+
+
+func test_initialize_if_new():
+	var project = DB.Project.new_record({ 'name': 'Test' })
+	scene.initialize(project)
+	assert_eq(scene.record, project)
+
+
+func test_initialize_if_existing():
+	var project = DB.Project.create({ 'name': 'Test' })
+	scene.initialize(project)
+	assert_eq(scene.record, project)
+
+
+func test_on_back_button_pressed_if_new():
+	var project = DB.Project.new_record({ 'name': 'Test' })
+	scene.initialize(project)
+	await transition_with(scene._on_back_button_pressed)
+	assert_eq(get_tree().current_scene.name, 'Projects')
+	get_tree().quit()
+
+
+func test_on_back_button_pressed_if_existing():
+	var project = DB.Project.create({ 'name': 'Test' })
+	scene.initialize(project)
+	await transition_with(scene._on_back_button_pressed)
+	assert_eq(get_tree().current_scene.name, 'Project')
+	get_tree().quit()

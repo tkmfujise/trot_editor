@@ -29,7 +29,8 @@ func test_back_button_pressed():
 	assert_eq(DB.Hoofprint.count(), 1)
 	scene._on_back_button_pressed()
 	assert_eq(DB.Hoofprint.count(), 1)
-	assert_ne(scene, get_tree().current_scene)
+	await get_tree().process_frame
+	assert_eq(get_tree().current_scene.name, 'Projects')
 	get_tree().quit()
 
 
