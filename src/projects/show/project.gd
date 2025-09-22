@@ -14,6 +14,20 @@ func initialize(_record: DB_Record) -> void:
 	%Hoofprint._on_start_button_pressed()
 
 
+func _shortcut_input(event: InputEvent) -> void:
+	if event is InputEventKey:
+		if not event.is_pressed(): return
+		match event.keycode:
+			KEY_BRACKETLEFT: if event.ctrl_pressed:
+				%TabContainer.select_previous_available()
+			KEY_BRACKETRIGHT: if event.ctrl_pressed:
+				%TabContainer.select_next_available()
+			KEY_MINUS: if event.ctrl_pressed:
+				%CollapseButton.pressed.emit()
+			KEY_S: if event.is_command_or_control_pressed():
+				if record: record.save() # TODO Update Memo
+
+
 func _on_back_button_pressed() -> void:
 	%Hoofprint.running = false
 	if record: record.save()

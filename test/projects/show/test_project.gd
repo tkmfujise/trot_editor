@@ -22,6 +22,27 @@ func test_initialize():
 	assert_not_null(scene.record)
 
 
+func test_shortcut_input():
+	project = DB.Project.create({ "name": "test" })
+	scene.initialize(project)
+	var event = InputEventKey.new()
+	event.pressed = true
+	# - Testing: TabContainer
+	event.ctrl_pressed = true
+	event.keycode = KEY_BRACKETRIGHT
+	scene._shortcut_input(event)
+	assert_eq(scene.find_child('TabContainer').current_tab, 1)
+	event.keycode = KEY_BRACKETLEFT
+	scene._shortcut_input(event)
+	assert_eq(scene.find_child('TabContainer').current_tab, 0)
+	# - Testing: CollapseButton
+	event.keycode = KEY_MINUS
+	scene._shortcut_input(event)
+	assert_eq(scene.find_child('TabContainer').visible, false)
+	scene._shortcut_input(event)
+	assert_eq(scene.find_child('TabContainer').visible, true)
+
+
 func test_back_button_pressed():
 	project = DB.Project.create({ "name": "test" })
 	assert_eq(DB.Hoofprint.count(), 0)
