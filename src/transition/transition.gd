@@ -1,5 +1,8 @@
 extends Node
 
+signal started
+signal finished
+
 @export_file('*.tscn') var next_scene_path : String
 @export var preload_scene : bool =  false
 
@@ -9,6 +12,7 @@ func _ready() -> void:
 
 
 func transit(args: Array = []) -> void:
+	started.emit()
 	if not preload_scene: load_next_scene()
 	var current = get_tree().current_scene
 	var status := loading_status()
@@ -22,6 +26,7 @@ func transit(args: Array = []) -> void:
 	current.get_tree().root.add_child(next_scene)
 	current.get_tree().current_scene = next_scene
 	current.queue_free()
+	finished.emit()
 
 
 func load_next_scene() -> void:

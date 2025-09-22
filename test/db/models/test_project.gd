@@ -31,6 +31,13 @@ func test_create():
 	assert_match_time_str(record.updated_at)
 
 
+func test_validates():
+	var record = DB.Project.new_record({ 'name': '' })
+	record.save()
+	assert_eq(record.errors, ['Name is empty'])
+	assert_eq(DB.Project.count(), 0)
+
+
 func test_first():
 	DB.Project.create({ "name": "Test" })
 	var record = DB.Project.first()

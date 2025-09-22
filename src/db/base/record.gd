@@ -2,6 +2,7 @@ class_name DB_Record
 
 var model : DB_Table
 var new_record : bool = false
+var errors : Array
 
 func column_names() -> Array[String]:
 	return [] # override this method
@@ -46,9 +47,20 @@ func attributes() -> Dictionary:
 
 
 func save() -> void:
+	_validates()
+	if errors: return
 	if new_record: check_existence()
 	if new_record: create()
 	else: update()
+
+
+func _validates() -> void:
+	errors = []
+	validates()
+
+
+func validates() -> void:
+	pass # Override this method
 
 
 func create() -> void:

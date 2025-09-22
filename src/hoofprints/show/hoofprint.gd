@@ -1,6 +1,6 @@
 extends MarginContainer
 
-const OFFSET := 65
+const OFFSET := 265
 
 @export var running : bool = false : set = set_running
 @export var goal_min : int = 60 : set = set_goal_min

@@ -9,6 +9,9 @@ class Record extends DB_Record:
 	var updated_at : String
 	func column_names(): return ['id', 'name', 'created_at', 'updated_at']
 
+	func validates() -> void:
+		if not name: errors.push_back('Name is empty')
+
 	func find_or_build_hoofprint(date: String) -> DB_Record:
 		var record = DB.Hoofprint.find("project_id = %s AND date = '%s'" % [id, date])
 		if record: return record

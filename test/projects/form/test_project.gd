@@ -19,6 +19,7 @@ func test_initialize_if_existing():
 	var project = DB.Project.create({ 'name': 'Test' })
 	scene.initialize(project)
 	assert_eq(scene.record, project)
+	assert_eq(scene.find_child('NameField').find_child('Input').text, 'Test')
 
 
 func test_on_back_button_pressed_if_new():
@@ -33,5 +34,17 @@ func test_on_back_button_pressed_if_existing():
 	var project = DB.Project.create({ 'name': 'Test' })
 	scene.initialize(project)
 	await transition_with(scene._on_back_button_pressed)
+	assert_eq(get_tree().current_scene.name, 'Project')
+	get_tree().quit()
+
+
+func test_on_submit_button_pressed():
+	var project = DB.Project.new_record()
+	scene.initialize(project)
+	scene.find_child('NameField').find_child('Input').set_text('Bar')
+	scene._on_submit_button_pressed()
+	await get_tree().process_frame
+	# await transition_with(scene._on_back_button_pressed)
+	assert_eq(DB.Project.last().name, 'Bar')
 	assert_eq(get_tree().current_scene.name, 'Project')
 	get_tree().quit()
