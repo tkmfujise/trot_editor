@@ -1,4 +1,11 @@
-[gd_resource type="Theme" load_steps=10 format=3 uid="uid://bp7tyi4g3un7a"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://bp7tyi4g3un7a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ck2yl"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1fv3y"]
 content_margin_left = 15.0
@@ -120,6 +127,7 @@ border_width_right = 1
 border_color = Color(0.1494745, 0.14947453, 0.14947441, 1)
 
 [resource]
+AcceptDialog/styles/panel = SubResource("StyleBoxFlat_ck2yl")
 Button/colors/font_color = Color(0, 0, 0, 1)
 Button/colors/font_focus_color = Color(0.838416, 0.545786, 0.275912, 1)
 Button/colors/font_hover_color = Color(0.839216, 0.545098, 0.27451, 1)

@@ -5,6 +5,7 @@ var record : DB_Record # DB.Project
 
 func initialize(project: DB_Record) -> void:
 	record = project
+	%DeleteButton.visible = !!(record.id)
 	set_values()
 
 
@@ -33,3 +34,13 @@ func _on_submit_button_pressed() -> void:
 	record.save()
 	if not record.errors:
 		%ProjectTransition.transit([record])
+
+
+func _on_delete_button_pressed() -> void:
+	%DeleteConfirmationDialog.show()
+
+
+func _on_delete_confirmation_dialog_confirmed() -> void:
+	if not record: return
+	record.destroy()
+	%ProjectsTransition.transit()

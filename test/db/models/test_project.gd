@@ -61,6 +61,14 @@ func test_destroy():
 	assert_eq(DB.Project.count(), 0)
 
 
+func test_destroy_if_associations():
+	var record = DB.Project.create({ "name": "Test" })
+	record.create_hoofprint({ "date": TimeHelper.now_str() })
+	record.create_file({ "path": "foo/bar.png" })
+	record.destroy()
+	assert_eq(DB.Project.count(), 0)
+
+
 func test_all():
 	DB.Project.create({ "name": "Foo" })
 	DB.Project.create({ "name": "Boo" })

@@ -25,6 +25,16 @@ class Record extends DB_Record:
 		dict.merge(params)
 		return DB.Hoofprint.create(dict)
 
+	func create_file(params: Dictionary) -> DB_Record:
+		var dict = { "project_id": id }
+		dict.merge(params)
+		return DB.File.create(dict)
+
+	func destroy() -> void:
+		DB.Hoofprint.delete('project_id = %s' % id)
+		DB.File.delete('project_id = %s' % id)
+		super()
+
 	func hoofprints() -> Array:
 		return DB.Hoofprint.where("project_id = %s" % id)
 
