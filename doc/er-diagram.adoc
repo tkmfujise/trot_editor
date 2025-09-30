@@ -6,19 +6,7 @@
 class Project {
   ~ id
   * name 
-  * created_at
-  * updated_at
-}
-class Page {
-  ~ id
-  + project_id
-  * created_at
-  * updated_at
-}
-class Memo {
-  ~ id
-  + page_id
-  * content
+  * memo
   * created_at
   * updated_at
 }
@@ -37,8 +25,6 @@ class File {
 hide methods
 left to right direction
 
-Project::id --{ Page::project_id
-Page::id    --{ Memo::page_id
 Project::id --{ Hoofprint::project_id
 Project::id --{ File::project_id
 ....
